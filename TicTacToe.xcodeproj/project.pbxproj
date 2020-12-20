@@ -15,6 +15,8 @@
 		FC3C3B3D258AA624002C0F5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC3C3B3B258AA624002C0F5A /* LaunchScreen.storyboard */; };
 		FC3C3B48258AA625002C0F5A /* TicTacToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3C3B47258AA625002C0F5A /* TicTacToeTests.swift */; };
 		FC3C3B53258AA625002C0F5A /* TicTacToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3C3B52258AA625002C0F5A /* TicTacToeUITests.swift */; };
+		FC3C3B64258AB202002C0F5A /* DificultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3C3B63258AB202002C0F5A /* DificultyViewController.swift */; };
+		FC3C3B69258BB201002C0F5A /* ChosenDifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3C3B68258BB201002C0F5A /* ChosenDifficultyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		FC3C3B4E258AA625002C0F5A /* TicTacToeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC3C3B52258AA625002C0F5A /* TicTacToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITests.swift; sourceTree = "<group>"; };
 		FC3C3B54258AA625002C0F5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC3C3B63258AB202002C0F5A /* DificultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DificultyViewController.swift; sourceTree = "<group>"; };
+		FC3C3B68258BB201002C0F5A /* ChosenDifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenDifficultyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				FC3C3B39258AA624002C0F5A /* Assets.xcassets */,
 				FC3C3B3B258AA624002C0F5A /* LaunchScreen.storyboard */,
 				FC3C3B3E258AA624002C0F5A /* Info.plist */,
+				FC3C3B63258AB202002C0F5A /* DificultyViewController.swift */,
+				FC3C3B68258BB201002C0F5A /* ChosenDifficultyViewController.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -258,7 +264,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC3C3B64258AB202002C0F5A /* DificultyViewController.swift in Sources */,
 				FC3C3B35258AA620002C0F5A /* ViewController.swift in Sources */,
+				FC3C3B69258BB201002C0F5A /* ChosenDifficultyViewController.swift in Sources */,
 				FC3C3B31258AA620002C0F5A /* AppDelegate.swift in Sources */,
 				FC3C3B33258AA620002C0F5A /* SceneDelegate.swift in Sources */,
 			);
