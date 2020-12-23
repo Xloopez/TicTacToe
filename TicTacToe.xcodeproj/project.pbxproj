@@ -17,6 +17,7 @@
 		FC3C3B53258AA625002C0F5A /* TicTacToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3C3B52258AA625002C0F5A /* TicTacToeUITests.swift */; };
 		FC3C3B64258AB202002C0F5A /* DificultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3C3B63258AB202002C0F5A /* DificultyViewController.swift */; };
 		FC3C3B69258BB201002C0F5A /* ChosenDifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3C3B68258BB201002C0F5A /* ChosenDifficultyViewController.swift */; };
+		FCF2FC8E2593AEBD004B95E5 /* Squares.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2FC8D2593AEBD004B95E5 /* Squares.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		FC3C3B54258AA625002C0F5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC3C3B63258AB202002C0F5A /* DificultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DificultyViewController.swift; sourceTree = "<group>"; };
 		FC3C3B68258BB201002C0F5A /* ChosenDifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenDifficultyViewController.swift; sourceTree = "<group>"; };
+		FCF2FC8D2593AEBD004B95E5 /* Squares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squares.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				FC3C3B3E258AA624002C0F5A /* Info.plist */,
 				FC3C3B63258AB202002C0F5A /* DificultyViewController.swift */,
 				FC3C3B68258BB201002C0F5A /* ChosenDifficultyViewController.swift */,
+				FCF2FC8D2593AEBD004B95E5 /* Squares.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCF2FC8E2593AEBD004B95E5 /* Squares.swift in Sources */,
 				FC3C3B64258AB202002C0F5A /* DificultyViewController.swift in Sources */,
 				FC3C3B35258AA620002C0F5A /* ViewController.swift in Sources */,
 				FC3C3B69258BB201002C0F5A /* ChosenDifficultyViewController.swift in Sources */,

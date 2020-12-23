@@ -16,11 +16,7 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func playerBtn1(_ sender: Any) {
-        performSegue(withIdentifier: segueIdentyfier, sender: self)
-    }
-    
-    @IBAction func playerBtn2(_ sender: Any) {
+    @IBAction func startBtn(_ sender: Any) {
         performSegue(withIdentifier: segueIdentyfier, sender: self)
     }
     
