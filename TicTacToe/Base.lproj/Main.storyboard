@@ -9,6 +9,60 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Player View Controller-->
+        <scene sceneID="rXo-jo-quG">
+            <objects>
+                <viewController id="N9J-50-bXs" customClass="PlayerViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VPS-tN-ClI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MtS-e8-gk0">
+                                <rect key="frame" x="91" y="196" width="232" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="p0l-Ap-HrT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oId-ty-nGF">
+                                <rect key="frame" x="91" y="450.5" width="232" height="48"/>
+                                <color key="backgroundColor" red="0.50448060039999998" green="0.6040005088" blue="0.94614535570000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="DGV-DK-bio"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextBtn:" destination="N9J-50-bXs" eventType="touchUpInside" id="RGC-wg-VA4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2hE-0I-pDm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MtS-e8-gk0" firstAttribute="leading" secondItem="2hE-0I-pDm" secondAttribute="leading" constant="91" id="A5p-o7-fnS"/>
+                            <constraint firstItem="oId-ty-nGF" firstAttribute="top" secondItem="MtS-e8-gk0" secondAttribute="bottom" constant="190.5" id="XEs-gu-KPG"/>
+                            <constraint firstItem="2hE-0I-pDm" firstAttribute="trailing" secondItem="oId-ty-nGF" secondAttribute="trailing" constant="91" id="YbE-1U-f4A"/>
+                            <constraint firstItem="2hE-0I-pDm" firstAttribute="trailing" secondItem="MtS-e8-gk0" secondAttribute="trailing" constant="91" id="oyw-RZ-ELi"/>
+                            <constraint firstItem="oId-ty-nGF" firstAttribute="leading" secondItem="2hE-0I-pDm" secondAttribute="leading" constant="91" id="qch-l4-aRv"/>
+                            <constraint firstItem="MtS-e8-gk0" firstAttribute="top" secondItem="2hE-0I-pDm" secondAttribute="top" constant="196" id="w0s-hR-bTU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nWD-Hy-w0V"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="MtS-e8-gk0" id="qFv-fp-B9o"/>
+                        <outlet property="nextBtn" destination="oId-ty-nGF" id="6rW-i9-PbB"/>
+                        <segue destination="XNf-eF-VKi" kind="show" identifier="segueToDifficultyView" id="XZ7-c1-Uo2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="76e-8K-48H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.739130434782609" y="93.75"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -30,6 +84,7 @@
                                 </state>
                                 <connections>
                                     <action selector="startBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ATj-mJ-dnV"/>
+                                    <segue destination="N9J-50-bXs" kind="show" identifier="segueToPlayerView" id="GUT-Mk-UQU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -45,13 +100,10 @@
                             <constraint firstItem="KbS-dZ-G4R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xIH-lO-54V"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <segue destination="XNf-eF-VKi" kind="show" identifier="segueToDifficultyView" id="vAN-sH-oRw"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="93.75"/>
+            <point key="canvasLocation" x="-926" y="94"/>
         </scene>
         <!--Dificulty View Controller-->
         <scene sceneID="5ff-xe-OEe">

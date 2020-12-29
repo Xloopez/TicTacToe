@@ -14,4 +14,7 @@ class Squares: UIView {
     let squareWidth = 100
     
     let squareSpace = 5
+    
+    //squareIndex may have future use
+    var squareIndex = 0
 }

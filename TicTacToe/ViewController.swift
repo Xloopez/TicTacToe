@@ -9,7 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var segueIdentyfier = "segueToDifficultyView"
+    //var segueIdentyfier = "segueToDifficultyView"
+    
+    let segueIdentyfier = "segueToPlayerView"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +24,11 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdentyfier {
-            let destinationVC = segue.destination as! DificultyViewController
+            let destinationVC = segue.destination as! PlayerViewController
+            
         }
     }
     
-
 
 }
 

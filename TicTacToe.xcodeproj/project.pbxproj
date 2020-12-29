@@ -18,6 +18,9 @@
 		FC3C3B64258AB202002C0F5A /* DificultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3C3B63258AB202002C0F5A /* DificultyViewController.swift */; };
 		FC3C3B69258BB201002C0F5A /* ChosenDifficultyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3C3B68258BB201002C0F5A /* ChosenDifficultyViewController.swift */; };
 		FCF2FC8E2593AEBD004B95E5 /* Squares.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2FC8D2593AEBD004B95E5 /* Squares.swift */; };
+		FCF2FCB32593EE63004B95E5 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2FCB22593EE63004B95E5 /* Player.swift */; };
+		FCF2FCB8259BA245004B95E5 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2FCB7259BA244004B95E5 /* PlayerViewController.swift */; };
+		FCF2FCBD259BB3AD004B95E5 /* GameSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2FCBC259BB3AD004B95E5 /* GameSetting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		FC3C3B63258AB202002C0F5A /* DificultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DificultyViewController.swift; sourceTree = "<group>"; };
 		FC3C3B68258BB201002C0F5A /* ChosenDifficultyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenDifficultyViewController.swift; sourceTree = "<group>"; };
 		FCF2FC8D2593AEBD004B95E5 /* Squares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squares.swift; sourceTree = "<group>"; };
+		FCF2FCB22593EE63004B95E5 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		FCF2FCB7259BA244004B95E5 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		FCF2FCBC259BB3AD004B95E5 /* GameSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,7 @@
 		FC3C3B24258AA620002C0F5A = {
 			isa = PBXGroup;
 			children = (
+				FCF2FCBC259BB3AD004B95E5 /* GameSetting.swift */,
 				FC3C3B2F258AA620002C0F5A /* TicTacToe */,
 				FC3C3B46258AA625002C0F5A /* TicTacToeTests */,
 				FC3C3B51258AA625002C0F5A /* TicTacToeUITests */,
@@ -115,6 +122,8 @@
 				FC3C3B63258AB202002C0F5A /* DificultyViewController.swift */,
 				FC3C3B68258BB201002C0F5A /* ChosenDifficultyViewController.swift */,
 				FCF2FC8D2593AEBD004B95E5 /* Squares.swift */,
+				FCF2FCB22593EE63004B95E5 /* Player.swift */,
+				FCF2FCB7259BA244004B95E5 /* PlayerViewController.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -268,9 +277,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCF2FC8E2593AEBD004B95E5 /* Squares.swift in Sources */,
+				FCF2FCBD259BB3AD004B95E5 /* GameSetting.swift in Sources */,
+				FCF2FCB8259BA245004B95E5 /* PlayerViewController.swift in Sources */,
 				FC3C3B64258AB202002C0F5A /* DificultyViewController.swift in Sources */,
 				FC3C3B35258AA620002C0F5A /* ViewController.swift in Sources */,
 				FC3C3B69258BB201002C0F5A /* ChosenDifficultyViewController.swift in Sources */,
+				FCF2FCB32593EE63004B95E5 /* Player.swift in Sources */,
 				FC3C3B31258AA620002C0F5A /* AppDelegate.swift in Sources */,
 				FC3C3B33258AA620002C0F5A /* SceneDelegate.swift in Sources */,
 			);
