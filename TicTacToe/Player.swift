@@ -10,10 +10,11 @@ import Foundation
 class Player {
     let name: String?
     
-    var points = 0
+    var points: Int?
     
-    init (name: String){
+    init (name: String, points: Int){
         self.name = name
+        self.points = points
         //self.points = points
     }
 }

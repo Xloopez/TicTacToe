@@ -234,7 +234,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="PlayerTwoLabel" destination="8ae-1b-UaW" id="9ZG-V1-ZVt"/>
                         <outlet property="gameBoardView" destination="Ijy-B5-z6j" id="C7q-YR-DLl"/>
+                        <outlet property="playerNameTurnLabel" destination="DNd-QG-V7p" id="4hS-tf-m4w"/>
+                        <outlet property="playerOneLabel" destination="4Dt-An-qLQ" id="CNO-b6-j9N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xWJ-t9-kgr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

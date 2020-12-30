@@ -13,13 +13,25 @@ class ChosenDifficultyViewController: UIViewController {
     
     @IBOutlet weak var gameBoardView: UIView!
     
+    @IBOutlet weak var playerNameTurnLabel: UILabel!
+    
+    @IBOutlet weak var playerOneLabel: UILabel!
+    
+    @IBOutlet weak var PlayerTwoLabel: UILabel!
+    
     var square = Squares()
+    
+    var counter = 0
     
     var xY = 0
     
     var yX = 0
     
     let squaresInRow = 3
+    
+    let gameSettings = GameSettings()
+    
+    var listOfPlayers: [Player] = []
     
     //let squareLabel = UILabel()
 
@@ -28,7 +40,28 @@ class ChosenDifficultyViewController: UIViewController {
     
         addSquaresToGameBoard()
         
+        //print("SPELARE 1 NAMN BRE namn: \(listOfPlayers[0].name)")
         
+        /*for player in gameSettings.listOfPlayers {
+            print("ALLA spelare i listan namn: \(String(player.name ?? "NONE"))")
+        }*/
+        displayPlayerName()
+        
+        
+    }
+    
+    func displayPlayerName(){
+        
+        //print(gameSettings.listOfPlayers.count)
+        playerOneLabel.text = String(listOfPlayers[0].name ?? "NONE")
+        PlayerTwoLabel.text = String(listOfPlayers[1].name ?? "NONE")
+        
+        //String(describing: gameSettings.listOfPlayers[0].name)
+        //playerNameTurnLabel.text = String(describing: gameSettings.listOfPlayers[0].name)
+        
+        if counter == 0 {
+            playerNameTurnLabel.text = String(listOfPlayers[counter].name ?? "None")
+        }
     }
     
     func addSquaresToGameBoard(){
@@ -83,11 +116,27 @@ class ChosenDifficultyViewController: UIViewController {
             
             let targetLabel = sender?.view?.viewWithTag(viewTag) as? UILabel
             
-            targetLabel?.text = "X"
+            //targetLabel?.text = "X"
             
             targetLabel?.isUserInteractionEnabled = false 
             
             //sender.self.squareLabel.text = ""
+            
+            switch counter {
+            case 0:
+                targetLabel?.text = "X"
+                
+                counter += 1
+            
+            case 1:
+                targetLabel?.text = "O"
+                
+                counter = 0
+             
+            default:
+                print("Vet inte vad som händer")
+                return
+            }
             
             
         }

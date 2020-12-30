@@ -10,6 +10,8 @@ import UIKit
 class DificultyViewController: UIViewController {
     
     let segueToChosenDifficulty = "segueToChosenDifficulty"
+    
+    var listOfPlayers: [Player] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,8 @@ class DificultyViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destinationVC = segue.destination as! ChosenDifficultyViewController
+        
+        destinationVC.listOfPlayers = listOfPlayers
     }
     
 }

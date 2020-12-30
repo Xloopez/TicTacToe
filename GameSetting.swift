@@ -8,9 +8,9 @@
 import Foundation
 
 class GameSettings {
-    var listOfPlayers: [Player] = []
+    var listOfPlayers: Array<Player> = Array()
     
     func addPlayersToList(name: String){
-        listOfPlayers.append(Player(name: name))
+        listOfPlayers.append(Player(name: name, points: 0))
     }
 }
