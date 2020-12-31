@@ -39,29 +39,16 @@ class ChosenDifficultyViewController: UIViewController {
         super.viewDidLoad()
     
         addSquaresToGameBoard()
-        
-        //print("SPELARE 1 NAMN BRE namn: \(listOfPlayers[0].name)")
-        
-        /*for player in gameSettings.listOfPlayers {
-            print("ALLA spelare i listan namn: \(String(player.name ?? "NONE"))")
-        }*/
         displayPlayerName()
         
         
     }
     
     func displayPlayerName(){
-        
-        //print(gameSettings.listOfPlayers.count)
         playerOneLabel.text = String(listOfPlayers[0].name ?? "NONE")
         PlayerTwoLabel.text = String(listOfPlayers[1].name ?? "NONE")
         
-        //String(describing: gameSettings.listOfPlayers[0].name)
-        //playerNameTurnLabel.text = String(describing: gameSettings.listOfPlayers[0].name)
-        
-        if counter == 0 {
-            playerNameTurnLabel.text = String(listOfPlayers[counter].name ?? "None")
-        }
+        playerNameTurnLabel.text = listOfPlayers[0].name
     }
     
     func addSquaresToGameBoard(){
@@ -126,15 +113,19 @@ class ChosenDifficultyViewController: UIViewController {
             case 0:
                 targetLabel?.text = "X"
                 
+                playerNameTurnLabel.text = listOfPlayers[1].name
+                
                 counter += 1
             
             case 1:
                 targetLabel?.text = "O"
                 
+                playerNameTurnLabel.text = listOfPlayers[0].name
+                
                 counter = 0
              
             default:
-                print("Vet inte vad som händer")
+                print("Vi kom hit")
                 return
             }
             
