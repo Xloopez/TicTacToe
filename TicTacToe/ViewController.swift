@@ -16,13 +16,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("VAD HÄNDER")
+        //print("VAD HÄNDER")
         
     }
     
     @IBAction func startBtn(_ sender: Any) {
         performSegue(withIdentifier: segueIdentyfier, sender: self)
-        print("VAD HÄNDER")
+        //print("VAD HÄNDER")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

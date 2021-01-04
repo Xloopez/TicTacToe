@@ -19,6 +19,10 @@ class ChosenDifficultyViewController: UIViewController {
     
     @IBOutlet weak var PlayerTwoLabel: UILabel!
     
+    var combosOfXTags = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
+    
+    var listOfPlayers: [Player] = []
+    
     var square = Squares()
     
     var counter = 0
@@ -31,7 +35,9 @@ class ChosenDifficultyViewController: UIViewController {
     
     let gameSettings = GameSettings()
     
-    var listOfPlayers: [Player] = []
+    var gameState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    
+    let winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     
     //let squareLabel = UILabel()
 
@@ -52,15 +58,19 @@ class ChosenDifficultyViewController: UIViewController {
     }
     
     func addSquaresToGameBoard(){
-        for i in 1...9 {
+        //Creates 9 squares
+        for i in 0...8 {
             let addedSquareLabel = createSquare(item: square)
             
+            //Adds tag to square
             addedSquareLabel.tag = i
             
+            //Addes squares vertically
             xY += square.squareWidth + square.squareSpace
             
             gameBoardView.addSubview(addedSquareLabel)
             
+            //Addes squares horizontally
             if xY == (square.squareWidth * squaresInRow) + (square.squareSpace * squaresInRow) {
                 xY = 0
                 yX += square.squareWidth + square.squareSpace
@@ -95,23 +105,28 @@ class ChosenDifficultyViewController: UIViewController {
     }
     
     @objc func handleGesture(sender: UITapGestureRecognizer? = nil){
+        //Function that handles tap gesture in the created UILables
         
         if sender?.state == .ended {
-            print("TAPPEDY TAP")
             
+            //if view tag != nil we enable user interaction so that when we press the button we can do things
             guard let viewTag = sender?.view?.tag else {return}
             
             let targetLabel = sender?.view?.viewWithTag(viewTag) as? UILabel
             
-            //targetLabel?.text = "X"
-            
-            targetLabel?.isUserInteractionEnabled = false 
-            
-            //sender.self.squareLabel.text = ""
+            targetLabel?.isUserInteractionEnabled = false
             
             switch counter {
             case 0:
+                //When counter is 0 it displays player 1 turn
+                
                 targetLabel?.text = "X"
+
+                if let labelTag = targetLabel?.tag {
+                    //Saves the players chosen tag so that we can determine the winner in func checkWinner
+                    //Player X lables is saved as 1 to compare to winning combos
+                    gameState[labelTag] = 1
+                }
                 
                 playerNameTurnLabel.text = listOfPlayers[1].name
                 
@@ -119,6 +134,12 @@ class ChosenDifficultyViewController: UIViewController {
             
             case 1:
                 targetLabel?.text = "O"
+                
+                if let labelTag = targetLabel?.tag {
+                    //Saves the players chosen tag so that we can determine the winner in func checkWinner
+                    //Player O lables is saved as 2 to compare to winning combos
+                    gameState[labelTag] = 2
+                }
                 
                 playerNameTurnLabel.text = listOfPlayers[0].name
                 
@@ -130,7 +151,34 @@ class ChosenDifficultyViewController: UIViewController {
             }
             
             
+            let winnerIs = checkWinner(targetLabel: targetLabel!)
+            //gameBoardView.isUserInteractionEnabled = true
+            
         }
+        
+        //let winnerIs = checkWinner()
+        //print(winnerIs)
+        
+    }
+    
+    func checkWinner (targetLabel: UIView) -> String {
+        for combinations in winningCombos {
+            if gameState[combinations[0]] != 0 && gameState[combinations[0]] == gameState[combinations[1]] && gameState[combinations[1]] == gameState[combinations[2]] {
+                
+                targetLabel.isUserInteractionEnabled = true
+                
+                if gameState[combinations[0]] == 1 {
+                    //targetLabel.isUserInteractionEnabled = true
+                    return "X"
+                } else if gameState[combinations[0]] == 2{
+                    return "O"
+                } else {
+                    return "draw"
+                }
+            }
+        }
+        
+        return ""
     }
 
 }

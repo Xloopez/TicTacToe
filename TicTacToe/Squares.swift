@@ -16,5 +16,19 @@ class Squares: UIView {
     let squareSpace = 5
     
     //squareIndex may have future use
-    var squareIndex = 0
+    /*var squareXTags: [Int] = []
+    
+    var squareOTags: [Int] = []
+    
+    init (squareXTags: [Int], squareOTags: [Int]) {
+        self.squareXTags = squareXTags
+        self.squareOTags = squareOTags
+        
+        super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
+    }*/
 }
