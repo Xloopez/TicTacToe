@@ -19,8 +19,6 @@ class ChosenDifficultyViewController: UIViewController {
     
     @IBOutlet weak var PlayerTwoLabel: UILabel!
     
-    var combosOfXTags = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
-    
     var listOfPlayers: [Player] = []
     
     var square = Squares()
@@ -31,23 +29,50 @@ class ChosenDifficultyViewController: UIViewController {
     
     var yX = 0
     
-    let squaresInRow = 3
+    var chosenDifficulty = ""
+    
+    var squaresInRow = 3
     
     let gameSettings = GameSettings()
     
     var gameState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     
-    let winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    let winningCombosEasy = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     
     //let squareLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        addSquaresToGameBoard()
+
+        
+        //addSquaresToGameBoard(amountOfSqares: 8)
+        
+        print(chosenDifficulty)
+        
+        whatDificultyToDisplay(playersDificulty: chosenDifficulty)
+        
+        
         displayPlayerName()
         
         
+    }
+    
+    func whatDificultyToDisplay (playersDificulty: String) {
+        if playersDificulty == "easy" {
+            addSquaresToGameBoard(amountOfSqares: 8)
+            
+        } else if playersDificulty == "medium" {
+            square.squareHeight = 90
+            square.squareWidth = 90
+            squaresInRow = 4
+            addSquaresToGameBoard(amountOfSqares: 15)
+            
+        } else if playersDificulty == "hard" {
+            square.squareHeight = 70
+            square.squareWidth = 70
+            squaresInRow = 5
+            addSquaresToGameBoard(amountOfSqares: 24)
+        }
     }
     
     func displayPlayerName(){
@@ -57,9 +82,9 @@ class ChosenDifficultyViewController: UIViewController {
         playerNameTurnLabel.text = listOfPlayers[0].name
     }
     
-    func addSquaresToGameBoard(){
+    func addSquaresToGameBoard(amountOfSqares: Int){
         //Creates 9 squares
-        for i in 0...8 {
+        for i in 0...amountOfSqares {
             let addedSquareLabel = createSquare(item: square)
             
             //Adds tag to square
@@ -162,7 +187,7 @@ class ChosenDifficultyViewController: UIViewController {
     }
     
     func checkWinner (targetLabel: UIView) -> String {
-        for combinations in winningCombos {
+        for combinations in winningCombosEasy {
             if gameState[combinations[0]] != 0 && gameState[combinations[0]] == gameState[combinations[1]] && gameState[combinations[1]] == gameState[combinations[2]] {
                 
                 targetLabel.isUserInteractionEnabled = true
