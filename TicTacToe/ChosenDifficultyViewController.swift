@@ -43,14 +43,10 @@ class ChosenDifficultyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        //addSquaresToGameBoard(amountOfSqares: 8)
         
         print(chosenDifficulty)
         
         whatDificultyToDisplay(playersDificulty: chosenDifficulty)
-        
         
         displayPlayerName()
         
@@ -65,12 +61,14 @@ class ChosenDifficultyViewController: UIViewController {
             square.squareHeight = 90
             square.squareWidth = 90
             squaresInRow = 4
+            gameState.append(contentsOf: [0, 0, 0, 0, 0, 0, 0])
             addSquaresToGameBoard(amountOfSqares: 15)
             
         } else if playersDificulty == "hard" {
             square.squareHeight = 70
             square.squareWidth = 70
             squaresInRow = 5
+            gameState.append(contentsOf: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
             addSquaresToGameBoard(amountOfSqares: 24)
         }
     }

@@ -9,9 +9,9 @@ import UIKit
 
 class Squares: UIView {
     
-    let squareHeight = 100
+    var squareHeight = 100
     
-    let squareWidth = 100
+    var squareWidth = 100
     
     let squareSpace = 5
     
