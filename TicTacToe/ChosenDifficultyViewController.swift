@@ -31,48 +31,23 @@ class ChosenDifficultyViewController: UIViewController {
     
     var chosenDifficulty = ""
     
-    var squaresInRow = 3
+    var gameStateDifficulty: (Int?, Int?)
     
-    let gameSettings = GameSettings()
-    
-    var gameState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    
-    let winningCombosEasy = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
-    
-    //let squareLabel = UILabel()
+    let playerGameState = GameState()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(chosenDifficulty)
         
-        whatDificultyToDisplay(playersDificulty: chosenDifficulty)
-        
         displayPlayerName()
         
+        gameStateDifficulty = playerGameState.whatDificultyToDisplay(playersDificulty: chosenDifficulty, square: square)
+        
+        addSquaresToGameBoard(amountOfSqares: gameStateDifficulty.0 ?? 0, squaresInRow: gameStateDifficulty.1 ?? 0)
         
     }
-    
-    func whatDificultyToDisplay (playersDificulty: String) {
-        if playersDificulty == "easy" {
-            addSquaresToGameBoard(amountOfSqares: 8)
-            
-        } else if playersDificulty == "medium" {
-            square.squareHeight = 90
-            square.squareWidth = 90
-            squaresInRow = 4
-            gameState.append(contentsOf: [0, 0, 0, 0, 0, 0, 0])
-            addSquaresToGameBoard(amountOfSqares: 15)
-            
-        } else if playersDificulty == "hard" {
-            square.squareHeight = 70
-            square.squareWidth = 70
-            squaresInRow = 5
-            gameState.append(contentsOf: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-            addSquaresToGameBoard(amountOfSqares: 24)
-        }
-    }
-    
+
     func displayPlayerName(){
         playerOneLabel.text = String(listOfPlayers[0].name ?? "NONE")
         PlayerTwoLabel.text = String(listOfPlayers[1].name ?? "NONE")
@@ -80,7 +55,7 @@ class ChosenDifficultyViewController: UIViewController {
         playerNameTurnLabel.text = listOfPlayers[0].name
     }
     
-    func addSquaresToGameBoard(amountOfSqares: Int){
+    func addSquaresToGameBoard(amountOfSqares: Int, squaresInRow: Int){
         //Creates 9 squares
         for i in 0...amountOfSqares {
             let addedSquareLabel = createSquare(item: square)
@@ -148,7 +123,7 @@ class ChosenDifficultyViewController: UIViewController {
                 if let labelTag = targetLabel?.tag {
                     //Saves the players chosen tag so that we can determine the winner in func checkWinner
                     //Player X lables is saved as 1 to compare to winning combos
-                    gameState[labelTag] = 1
+                    playerGameState.gameState[labelTag] = 1
                 }
                 
                 playerNameTurnLabel.text = listOfPlayers[1].name
@@ -161,7 +136,7 @@ class ChosenDifficultyViewController: UIViewController {
                 if let labelTag = targetLabel?.tag {
                     //Saves the players chosen tag so that we can determine the winner in func checkWinner
                     //Player O lables is saved as 2 to compare to winning combos
-                    gameState[labelTag] = 2
+                    playerGameState.gameState[labelTag] = 2
                 }
                 
                 playerNameTurnLabel.text = listOfPlayers[0].name
@@ -173,35 +148,12 @@ class ChosenDifficultyViewController: UIViewController {
                 return
             }
             
-            
-            let winnerIs = checkWinner(targetLabel: targetLabel!)
-            //gameBoardView.isUserInteractionEnabled = true
+            //chechs for the winner
+            let winner = GameState().checkWinner()
+            print(winner)
             
         }
         
-        //let winnerIs = checkWinner()
-        //print(winnerIs)
-        
-    }
-    
-    func checkWinner (targetLabel: UIView) -> String {
-        for combinations in winningCombosEasy {
-            if gameState[combinations[0]] != 0 && gameState[combinations[0]] == gameState[combinations[1]] && gameState[combinations[1]] == gameState[combinations[2]] {
-                
-                targetLabel.isUserInteractionEnabled = true
-                
-                if gameState[combinations[0]] == 1 {
-                    //targetLabel.isUserInteractionEnabled = true
-                    return "X"
-                } else if gameState[combinations[0]] == 2{
-                    return "O"
-                } else {
-                    return "draw"
-                }
-            }
-        }
-        
-        return ""
     }
 
 }

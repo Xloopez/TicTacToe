@@ -21,6 +21,7 @@
 		FCF2FCB32593EE63004B95E5 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2FCB22593EE63004B95E5 /* Player.swift */; };
 		FCF2FCB8259BA245004B95E5 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2FCB7259BA244004B95E5 /* PlayerViewController.swift */; };
 		FCF2FCBD259BB3AD004B95E5 /* GameSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2FCBC259BB3AD004B95E5 /* GameSetting.swift */; };
+		FCF2FCC825A47637004B95E5 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2FCC725A47635004B95E5 /* GameState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		FCF2FCB22593EE63004B95E5 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		FCF2FCB7259BA244004B95E5 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		FCF2FCBC259BB3AD004B95E5 /* GameSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetting.swift; sourceTree = "<group>"; };
+		FCF2FCC725A47635004B95E5 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				FCF2FC8D2593AEBD004B95E5 /* Squares.swift */,
 				FCF2FCB22593EE63004B95E5 /* Player.swift */,
 				FCF2FCB7259BA244004B95E5 /* PlayerViewController.swift */,
+				FCF2FCC725A47635004B95E5 /* GameState.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				FC3C3B35258AA620002C0F5A /* ViewController.swift in Sources */,
 				FC3C3B69258BB201002C0F5A /* ChosenDifficultyViewController.swift in Sources */,
 				FCF2FCB32593EE63004B95E5 /* Player.swift in Sources */,
+				FCF2FCC825A47637004B95E5 /* GameState.swift in Sources */,
 				FC3C3B31258AA620002C0F5A /* AppDelegate.swift in Sources */,
 				FC3C3B33258AA620002C0F5A /* SceneDelegate.swift in Sources */,
 			);
