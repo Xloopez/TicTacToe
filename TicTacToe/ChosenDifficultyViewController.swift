@@ -56,7 +56,7 @@ class ChosenDifficultyViewController: UIViewController {
     }
     
     func addSquaresToGameBoard(amountOfSqares: Int, squaresInRow: Int){
-        //Creates 9 squares
+        //Creates the amount of squares that is sent in to the func in variable amountOfSqares
         for i in 0...amountOfSqares {
             let addedSquareLabel = createSquare(item: square)
             
@@ -144,15 +144,31 @@ class ChosenDifficultyViewController: UIViewController {
                 counter = 0
              
             default:
-                print("Vi kom hit")
+                print("Why did we get here?")
                 return
             }
             
-            //chechs for the winner
-            let winner = GameState().checkWinner()
-            print(winner)
+            //checks for the winner
+            checksForWinner()
             
         }
+        
+    }
+    
+    func checksForWinner (){
+        var winner = ""
+        
+        if chosenDifficulty == "easy" {
+            winner = playerGameState.checkWinnerEasy()
+            
+        } else if chosenDifficulty == "medium" {
+            winner = playerGameState.checkWinnerMedium()
+            
+        } else if chosenDifficulty == "hard" {
+            winner = playerGameState.checkWinnerHard()
+        }
+        
+        //print("Vinnaren är: \(winner)")
         
     }
 
