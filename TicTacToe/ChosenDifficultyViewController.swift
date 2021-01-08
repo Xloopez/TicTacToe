@@ -9,7 +9,9 @@ import UIKit
 
 class ChosenDifficultyViewController: UIViewController {
     
-    @IBOutlet weak var btn1: UIButton!
+    //@IBOutlet weak var btn1: UIButton!
+    
+    @IBOutlet weak var playAgainBtn: UIButton!
     
     @IBOutlet weak var gameBoardView: UIView!
     
@@ -18,6 +20,10 @@ class ChosenDifficultyViewController: UIViewController {
     @IBOutlet weak var playerOneLabel: UILabel!
     
     @IBOutlet weak var PlayerTwoLabel: UILabel!
+    
+    @IBOutlet weak var playerOnePointLabel: UILabel!
+    
+    @IBOutlet weak var playerTwoPointLabel: UILabel!
     
     var listOfPlayers: [Player] = []
     
@@ -31,14 +37,18 @@ class ChosenDifficultyViewController: UIViewController {
     
     var chosenDifficulty = ""
     
+    var winner = ""
+    
     var gameStateDifficulty: (Int?, Int?)
+    
+    var squaresInGameBoardView = [UILabel]()
     
     let playerGameState = GameState()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(chosenDifficulty)
+        playAgainBtn.isHidden = true
         
         displayPlayerName()
         
@@ -47,12 +57,41 @@ class ChosenDifficultyViewController: UIViewController {
         addSquaresToGameBoard(amountOfSqares: gameStateDifficulty.0 ?? 0, squaresInRow: gameStateDifficulty.1 ?? 0)
         
     }
+    
+    
+    
+    @IBAction func playAgainBtn(_ sender: Any) {
+        clearGameboard()
+        playAgainBtn.isHidden = true
+    }
+    
+    
+    func clearGameboard() {
+        for i in 0...squaresInGameBoardView.count-1 {
+            squaresInGameBoardView[i].text = ""
+            squaresInGameBoardView[i].isUserInteractionEnabled = true
+        }
+    }
+    
+    func enableGameboard() {
+        if winner != "" {
+            for i in 0...squaresInGameBoardView.count-1 {
+                squaresInGameBoardView[i].isUserInteractionEnabled = false
+            }
+        }
+    }
 
     func displayPlayerName(){
+        //Displays right player and their points
         playerOneLabel.text = String(listOfPlayers[0].name ?? "NONE")
+        playerOnePointLabel.text = "Points: \(String(describing: listOfPlayers[0].points))"
+        
         PlayerTwoLabel.text = String(listOfPlayers[1].name ?? "NONE")
+        playerTwoPointLabel.text = "Points: \(String(describing: listOfPlayers[1].points))"
         
         playerNameTurnLabel.text = listOfPlayers[0].name
+        
+        showWinner(player: winner)
     }
     
     func addSquaresToGameBoard(amountOfSqares: Int, squaresInRow: Int){
@@ -62,6 +101,9 @@ class ChosenDifficultyViewController: UIViewController {
             
             //Adds tag to square
             addedSquareLabel.tag = i
+            
+            //Adding squares tag to array to enableUserInteraction in enableGameBoard()
+            squaresInGameBoardView.append(addedSquareLabel)
             
             //Addes squares vertically
             xY += square.squareWidth + square.squareSpace
@@ -74,7 +116,7 @@ class ChosenDifficultyViewController: UIViewController {
                 yX += square.squareWidth + square.squareSpace
                 
             }
-            //print(i)
+            
         }
 
     }
@@ -148,7 +190,6 @@ class ChosenDifficultyViewController: UIViewController {
                 return
             }
             
-            //checks for the winner
             checksForWinner()
             
         }
@@ -156,20 +197,50 @@ class ChosenDifficultyViewController: UIViewController {
     }
     
     func checksForWinner (){
-        var winner = ""
-        
+        //checks for the winner
         if chosenDifficulty == "easy" {
             winner = playerGameState.checkWinnerEasy()
+            enableGameboard()
             
         } else if chosenDifficulty == "medium" {
             winner = playerGameState.checkWinnerMedium()
+            enableGameboard()
             
         } else if chosenDifficulty == "hard" {
             winner = playerGameState.checkWinnerHard()
+            enableGameboard()
         }
         
-        //print("Vinnaren är: \(winner)")
+        addPointsToPlayer(winner: winner)
+    }
+    
+    func showWinner(player: String){
+        if player == "X" {
+            playerNameTurnLabel.text = "WINNER IS: \(String(describing: listOfPlayers[0].name ?? "NONE"))"
+            
+            playAgainBtn.isHidden = false
+            
+            winner = ""
+        } else if player == "O" {
+            playerNameTurnLabel.text = "WINNER IS: \(String(describing: listOfPlayers[1].name ?? "NONE"))"
+            
+            playAgainBtn.isHidden = false
+            
+            winner = ""
+        }
+    }
+    
+    func addPointsToPlayer (winner: String) {
+        if winner == "X" {
+            listOfPlayers[0].points += 1
         
+            displayPlayerName()
+            
+        } else if winner == "O" {
+            listOfPlayers[1].points += 1
+            
+            displayPlayerName()
+        }
     }
 
 }

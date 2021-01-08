@@ -176,8 +176,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlayerNameTurn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNd-QG-V7p">
-                                <rect key="frame" x="43" y="48" width="328" height="32.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <rect key="frame" x="43" y="48" width="328" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -213,6 +213,18 @@
                                     <constraint firstAttribute="width" constant="368" id="yaQ-3S-n17"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XH4-d7-PFl">
+                                <rect key="frame" x="79" y="653" width="256" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="N66-EJ-bLk"/>
+                                    <constraint firstAttribute="width" constant="256" id="UPu-AD-GgP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <state key="normal" title="Play again"/>
+                                <connections>
+                                    <action selector="playAgainBtn:" destination="47H-X3-Ltt" eventType="touchUpInside" id="OPN-ZA-elE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rdS-Rw-Owj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -225,9 +237,12 @@
                             <constraint firstItem="JtI-4r-zmn" firstAttribute="top" secondItem="8ae-1b-UaW" secondAttribute="bottom" constant="8" symbolic="YES" id="LWN-6B-bWd"/>
                             <constraint firstItem="DNd-QG-V7p" firstAttribute="top" secondItem="rdS-Rw-Owj" secondAttribute="top" constant="48" id="MaM-KX-Mm5"/>
                             <constraint firstItem="4Dt-An-qLQ" firstAttribute="leading" secondItem="rdS-Rw-Owj" secondAttribute="leading" constant="43" id="MvZ-cH-HaP"/>
+                            <constraint firstItem="rdS-Rw-Owj" firstAttribute="bottom" secondItem="XH4-d7-PFl" secondAttribute="bottom" constant="80" id="N5s-wR-hTH"/>
                             <constraint firstItem="DNd-QG-V7p" firstAttribute="centerX" secondItem="Khh-Gd-EZO" secondAttribute="centerX" id="XzR-t7-cNm"/>
                             <constraint firstItem="rdS-Rw-Owj" firstAttribute="trailing" secondItem="DNd-QG-V7p" secondAttribute="trailing" constant="43" id="YWw-yI-gjh"/>
                             <constraint firstItem="Ijy-B5-z6j" firstAttribute="centerX" secondItem="Khh-Gd-EZO" secondAttribute="centerX" id="Ybm-FM-cYd"/>
+                            <constraint firstItem="XH4-d7-PFl" firstAttribute="leading" secondItem="rdS-Rw-Owj" secondAttribute="leading" constant="79" id="hUT-gR-jxu"/>
+                            <constraint firstItem="rdS-Rw-Owj" firstAttribute="trailing" secondItem="XH4-d7-PFl" secondAttribute="trailing" constant="79" id="kPz-k3-KM9"/>
                             <constraint firstItem="l2B-S1-f40" firstAttribute="leading" secondItem="rdS-Rw-Owj" secondAttribute="leading" constant="43" id="w7a-9l-nOH"/>
                             <constraint firstItem="8ae-1b-UaW" firstAttribute="top" secondItem="rdS-Rw-Owj" secondAttribute="top" constant="140" id="wz1-xQ-fDG"/>
                             <constraint firstItem="l2B-S1-f40" firstAttribute="top" secondItem="4Dt-An-qLQ" secondAttribute="bottom" constant="8" symbolic="YES" id="yXN-iN-fi4"/>
@@ -236,8 +251,11 @@
                     <connections>
                         <outlet property="PlayerTwoLabel" destination="8ae-1b-UaW" id="9ZG-V1-ZVt"/>
                         <outlet property="gameBoardView" destination="Ijy-B5-z6j" id="C7q-YR-DLl"/>
+                        <outlet property="playAgainBtn" destination="XH4-d7-PFl" id="gdC-au-NGh"/>
                         <outlet property="playerNameTurnLabel" destination="DNd-QG-V7p" id="4hS-tf-m4w"/>
                         <outlet property="playerOneLabel" destination="4Dt-An-qLQ" id="CNO-b6-j9N"/>
+                        <outlet property="playerOnePointLabel" destination="l2B-S1-f40" id="Aea-BJ-lsE"/>
+                        <outlet property="playerTwoPointLabel" destination="JtI-4r-zmn" id="GcX-f1-CIH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xWJ-t9-kgr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
