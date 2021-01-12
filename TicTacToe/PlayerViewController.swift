@@ -25,6 +25,7 @@ class PlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         
         
         nameLabel.placeholder = "Player 1 name"

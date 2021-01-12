@@ -9,8 +9,6 @@ import UIKit
 
 class ChosenDifficultyViewController: UIViewController {
     
-    //@IBOutlet weak var btn1: UIButton!
-    
     @IBOutlet weak var playAgainBtn: UIButton!
     
     @IBOutlet weak var gameBoardView: UIView!
@@ -24,6 +22,10 @@ class ChosenDifficultyViewController: UIViewController {
     @IBOutlet weak var playerOnePointLabel: UILabel!
     
     @IBOutlet weak var playerTwoPointLabel: UILabel!
+    
+    let firstViewControllerSegue = "rootViewController"
+    
+    let gameState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     
     var listOfPlayers: [Player] = []
     
@@ -47,6 +49,7 @@ class ChosenDifficultyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         
         playAgainBtn.isHidden = true
         
@@ -58,25 +61,72 @@ class ChosenDifficultyViewController: UIViewController {
         
     }
     
+    @IBAction func quitBtn(_ sender: Any) {
+        quitAlert()
+        
+    }
+    func quitAlert (){
+        let winnerName = quitGameWinner()
+        
+        let alert = UIAlertController(
+            title: "\(String(winnerName.0 ?? ""))",
+            message: "Winns with \(winnerName.1) points",
+            preferredStyle: .alert)
+        
+        let quitAction = UIAlertAction(title: "Quit", style: .destructive) { action in
+            self.performSegue(withIdentifier: self.firstViewControllerSegue, sender: self)
+        }
+                
+        alert.addAction(quitAction)
+        
+        present(alert, animated: true)
+        
+        self.navigationController?.popToRootViewController(animated: true)
+        
+        print(winnerName.0 ?? "")
+        print(winnerName.1)
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ViewController
+    }
     
     @IBAction func playAgainBtn(_ sender: Any) {
+        winner = ""
         clearGameboard()
         playAgainBtn.isHidden = true
     }
     
+    func quitGameWinner() -> (String?, Int) {
+        
+        if listOfPlayers[0].points > listOfPlayers[1].points {
+            return (listOfPlayers[0].name, listOfPlayers[0].points)
+            
+        } else if listOfPlayers[1].points > listOfPlayers[0].points {
+            return (listOfPlayers[1].name, listOfPlayers[1].points)
+        }
+        
+        return ("", 0)
+    }
     
     func clearGameboard() {
-        for i in 0...squaresInGameBoardView.count-1 {
-            squaresInGameBoardView[i].text = ""
-            squaresInGameBoardView[i].isUserInteractionEnabled = true
+        //winner = ""
+        
+        for square in squaresInGameBoardView {
+            square.text = ""
+            square.isUserInteractionEnabled = true
         }
+        
+        playerGameState.gameState = gameState
     }
     
     func enableGameboard() {
+        //print("WINNER IS: ")
+        //print(winner)
+        
         if winner != "" {
-            for i in 0...squaresInGameBoardView.count-1 {
-                squaresInGameBoardView[i].isUserInteractionEnabled = false
+            for square in squaresInGameBoardView {
+                square.isUserInteractionEnabled = false
             }
         }
     }
@@ -91,7 +141,7 @@ class ChosenDifficultyViewController: UIViewController {
         
         playerNameTurnLabel.text = listOfPlayers[0].name
         
-        showWinner(player: winner)
+        showWinner()
     }
     
     func addSquaresToGameBoard(amountOfSqares: Int, squaresInRow: Int){
@@ -161,6 +211,7 @@ class ChosenDifficultyViewController: UIViewController {
                 //When counter is 0 it displays player 1 turn
                 
                 targetLabel?.text = "X"
+                targetLabel?.textColor = playAgainBtn.currentTitleColor
 
                 if let labelTag = targetLabel?.tag {
                     //Saves the players chosen tag so that we can determine the winner in func checkWinner
@@ -174,6 +225,7 @@ class ChosenDifficultyViewController: UIViewController {
             
             case 1:
                 targetLabel?.text = "O"
+                targetLabel?.textColor = .white
                 
                 if let labelTag = targetLabel?.tag {
                     //Saves the players chosen tag so that we can determine the winner in func checkWinner
@@ -189,6 +241,7 @@ class ChosenDifficultyViewController: UIViewController {
                 print("Why did we get here?")
                 return
             }
+            //print("KOllar vinnaren")
             
             checksForWinner()
             
@@ -214,19 +267,19 @@ class ChosenDifficultyViewController: UIViewController {
         addPointsToPlayer(winner: winner)
     }
     
-    func showWinner(player: String){
-        if player == "X" {
+    func showWinner(){
+        if winner == "X" {
             playerNameTurnLabel.text = "WINNER IS: \(String(describing: listOfPlayers[0].name ?? "NONE"))"
             
             playAgainBtn.isHidden = false
             
-            winner = ""
-        } else if player == "O" {
+            //winner = ""
+        } else if winner == "O" {
             playerNameTurnLabel.text = "WINNER IS: \(String(describing: listOfPlayers[1].name ?? "NONE"))"
             
             playAgainBtn.isHidden = false
             
-            winner = ""
+            //winner = ""
         }
     }
     

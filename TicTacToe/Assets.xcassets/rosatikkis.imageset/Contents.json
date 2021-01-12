@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "TicTacToeLabel.png",
+      "filename" : "rosatikkis.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "rosatikkis.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
