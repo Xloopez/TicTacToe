@@ -11,6 +11,8 @@ class GameState {
  
     var gameState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     
+    var counter = 0
+    
     var theWinningCombo = [[Int]]()
     
     let winningCombosEasy = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
@@ -59,11 +61,17 @@ class GameState {
              } else if gameState[combinations[0]] == 2 {
                 
                  return "O"
-             } else {
-                 return "draw"
              }
          }
+        
      }
+    
+    counter += 1
+    
+    if counter == gameState.count {
+        counter = 0
+        return "draw"
+    }
      
      return ""
  }
@@ -84,6 +92,13 @@ class GameState {
              }
          }
      }
+    
+    counter += 1
+    
+    if counter == gameState.count {
+        counter = 0
+        return "draw"
+    }
      
      return ""
  }
@@ -106,6 +121,13 @@ class GameState {
              }
          }
      }
+    
+    counter += 1
+    
+    if counter == gameState.count {
+        counter = 0
+        return "draw"
+    }
      
      return ""
  }

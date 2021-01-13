@@ -66,25 +66,43 @@ class ChosenDifficultyViewController: UIViewController {
         
     }
     func quitAlert (){
+        //Gets the plaayer with most points
         let winnerName = quitGameWinner()
         
-        let alert = UIAlertController(
-            title: "\(String(winnerName.0 ?? ""))",
-            message: "Winns with \(winnerName.1) points",
-            preferredStyle: .alert)
+        var alert = UIAlertController()
         
+        if winnerName.1 == 0 {
+            //creates alert message
+            alert = UIAlertController(
+                title: "Are you sure that you",
+                message: "want to quit?",
+                preferredStyle: .alert
+            )
+            
+        } else {
+            //creates alert message
+            alert = UIAlertController(
+                title: "\(String(winnerName.0 ?? ""))",
+                message: "Winns with \(winnerName.1) points",
+                preferredStyle: .alert)
+        }
+        
+        //Creates quit button for alert message
         let quitAction = UIAlertAction(title: "Quit", style: .destructive) { action in
+            //Adds action to quit button - preforms swgue, takes player back to rootViewController
             self.performSegue(withIdentifier: self.firstViewControllerSegue, sender: self)
         }
-                
+        
+        //Adds the quit button to alert message
         alert.addAction(quitAction)
         
+        //Presents alert message
         present(alert, animated: true)
         
         self.navigationController?.popToRootViewController(animated: true)
         
-        print(winnerName.0 ?? "")
-        print(winnerName.1)
+        //print(winnerName.0 ?? "")
+        //print(winnerName.1)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -255,6 +273,9 @@ class ChosenDifficultyViewController: UIViewController {
             winner = playerGameState.checkWinnerEasy()
             enableGameboard()
             
+            print("WINNER")
+            print(winner)
+            
         } else if chosenDifficulty == "medium" {
             winner = playerGameState.checkWinnerMedium()
             enableGameboard()
@@ -269,17 +290,23 @@ class ChosenDifficultyViewController: UIViewController {
     
     func showWinner(){
         if winner == "X" {
-            playerNameTurnLabel.text = "WINNER IS: \(String(describing: listOfPlayers[0].name ?? "NONE"))"
+            playerNameTurnLabel.text = "\(String(describing: listOfPlayers[0].name ?? "NONE")) WINS"
             
             playAgainBtn.isHidden = false
             
             //winner = ""
         } else if winner == "O" {
-            playerNameTurnLabel.text = "WINNER IS: \(String(describing: listOfPlayers[1].name ?? "NONE"))"
+            playerNameTurnLabel.text = "\(String(describing: listOfPlayers[1].name ?? "NONE")) WINS"
             
             playAgainBtn.isHidden = false
             
             //winner = ""
+        } else if winner == "draw" {
+            print("NU ÄR VI HÄR")
+            
+            playerNameTurnLabel.text = "It's a draw!"
+            
+            playAgainBtn.isHidden = false
         }
     }
     
@@ -292,6 +319,8 @@ class ChosenDifficultyViewController: UIViewController {
         } else if winner == "O" {
             listOfPlayers[1].points += 1
             
+            displayPlayerName()
+        } else if winner == "draw" {
             displayPlayerName()
         }
     }
